@@ -12,8 +12,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build2": "next build && next export",
+    "export": "next build && next export",
+    "build:prod": "next build && next export && npm run start-server",
     "build:dev": "NODE_ENV=development next build",
+    "start-server": "npx http-server out",
     "start": "next start",
     "deploy": "vercel deploy",
     "deps": "run-s deps:*",
