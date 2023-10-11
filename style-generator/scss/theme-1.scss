@@ -5,8 +5,22 @@
 
 body {
     font-family: 'Open Sans';
-
+    --notion-font: 'Open Sans';
     .notion-title {
         text-transform: uppercase;
+        position: absolute!important;
+        width: 1px!important;
+        height: 1px!important;
+        padding: 0!important;
+        overflow: hidden!important;
+        clip: rect(0, 0, 0, 0)!important;
+        white-space: nowrap!important;
+        border: 0!important;
+    }
+
+    .notion-h1 {
+        font-size: 3em;
+        line-height: 1.2em;
+        margin-bottom: 0.5em;
     }
 }
