@@ -32,15 +32,9 @@ export default class MyDocument extends Document {
           <Root>
             <ThemeProvider theme={theme}>
               <Global styles={css`
-                body {
-                  color: blue !important;
-                }
               `}
               />
               <Global styles={css`
-                body {
-                  color: red !important;
-                }
               `}
               />
               <script
