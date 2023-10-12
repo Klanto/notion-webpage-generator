@@ -62,6 +62,10 @@ export const linkedin: string | null = getSiteConfig('linkedin', null)
 export const newsletter: string | null = getSiteConfig('newsletter', null)
 export const zhihu: string | null = getSiteConfig('zhihu', null)
 
+// custom tags
+export const header: string | null = getSiteConfig('header', null)
+export const footer: string | null = getSiteConfig('footer', null)
+
 export const getMastodonHandle = (): string | null => {
   if (!mastodon) {
     return null

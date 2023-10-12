@@ -2,6 +2,7 @@ import * as React from 'react'
 import { NotionPage } from '@/components/NotionPage'
 import { useEffect, useState } from 'react'
 import { api, apiHost } from '@/lib/config'
+import { getSiteConfig } from '../lib/get-config-value';
 
 export default function Preview() {
   const [pageid, setPageId] = useState(() => {
@@ -9,7 +10,6 @@ export default function Preview() {
   });
 
   const [props, setProps] = useState(null);
-
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(`${apiHost}${api.getNotionPageProps}`, {
@@ -22,7 +22,6 @@ export default function Preview() {
         }
       }).then((response) => response.json())
         .then((data) => {
-          debugger;
           setProps(data);
         })
         .catch((err) => {

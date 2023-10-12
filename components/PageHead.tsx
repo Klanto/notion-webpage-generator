@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Head from 'next/head'
+import parse from 'html-react-parser'
 
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
@@ -11,8 +12,10 @@ export const PageHead: React.FC<
     description?: string
     image?: string
     url?: string
+    header?: string
+    footer?: string
   }
-> = ({ site, title, description, pageId, image, url }) => {
+> = ({ site, title, description, pageId, image, url, header, footer }) => {
   const rssFeedUrl = `${config.host}/feed`
 
   title = title ?? site?.name
@@ -81,6 +84,12 @@ export const PageHead: React.FC<
 
       <meta property='og:title' content={title} />
       <meta name='twitter:title' content={title} />
+        
+      {
+        header && (
+          parse(header)
+        )
+      }
       <title>{title}</title>
     </Head>
   )

@@ -1,7 +1,17 @@
 import * as React from 'react'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
-
+import { css, Global, ThemeProvider } from '@emotion/react'
+import styled from '@emotion/styled'
 import { IconContext } from '@react-icons/all-files'
+import { useEffect, Fragment } from 'react'
+
+
+export const Root = styled.body`
+  border: 1px solid red;
+`;
+
+export const theme = {
+}
 
 export default class MyDocument extends Document {
   render() {
@@ -20,10 +30,23 @@ export default class MyDocument extends Document {
             <link rel='manifest' href='/manifest.json' />
           </Head>
 
-          <body>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
+          <Root>
+            <ThemeProvider theme={theme}>
+              <Global styles={css`
+                body {
+                  color: blue !important;
+                }
+              `}
+              />
+              <Global styles={css`
+                body {
+                  color: red !important;
+                }
+              `}
+              />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
 /** Inlined version of noflash.js from use-dark-mode */
 ;(function () {
   var storageKey = 'darkMode'
@@ -59,12 +82,14 @@ export default class MyDocument extends Document {
   }
 })();
 `
-              }}
-            />
-            <Main />
+                }}
+              />
+              <Main />
 
-            <NextScript />
-          </body>
+              <NextScript />
+
+            </ThemeProvider>
+          </Root>
         </Html>
       </IconContext.Provider>
     )

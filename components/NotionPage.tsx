@@ -26,6 +26,7 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
+import { getSiteConfig } from '@/lib/get-config-value'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -250,6 +251,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         description={socialDescription}
         image={socialImage}
         url={canonicalPageUrl}
+        header={getSiteConfig('header')}
       />
 
       {isLiteMode && <BodyClassName className='notion-lite' />}

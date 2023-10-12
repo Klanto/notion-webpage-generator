@@ -29,6 +29,8 @@
     "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check"
   },
   "dependencies": {
+    "@emotion/react": "11.1.1",
+    "@emotion/styled": "11.0.0",
     "@fisch0920/use-dark-mode": "^2.4.0",
     "@keyvhq/core": "^1.6.9",
     "@keyvhq/redis": "^1.6.10",
@@ -39,6 +41,7 @@
     "expiry-map": "^2.0.0",
     "fathom-client": "^3.4.1",
     "got": "^12.0.3",
+    "html-react-parser": "^4.2.2",
     "isomorphic-unfetch": "^3.1.0",
     "lqip-modern": "^1.2.0",
     "next": "^12.3.1",
