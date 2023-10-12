@@ -7,7 +7,6 @@ import { useEffect, Fragment } from 'react'
 
 
 export const Root = styled.body`
-  border: 1px solid red;
 `;
 
 export const theme = {
