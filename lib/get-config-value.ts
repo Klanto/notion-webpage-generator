@@ -43,21 +43,15 @@ const fetchSiteConfig = () => {
     "js": "<script>console.log(\"this is JS only section and it needs to go in the header\")</script>",
     "css": "p {\r\ncolor: red !important;\r\n}",
     "logo": "https://app.jiffy.so/static/images/jiffy.jpg",
-    "pages": [
+    "rootNotionPageId": '89dbe8d0295245d48771a8c67ceee315',
+    "navigationLinks": [
       {
-        "notion_url": "https://klanto.notion.site/The-Mysterious-Spellbooks-137d4930bed548a0ad7065f91b3f4c44?pvs=4",
-        "browser_url": "/",
-        "notion_page_id": "137d4930bed548a0ad7065f91b3f4c44"
+        title: 'ok1',
+        pageId: '2e31899735d7481ba488913633640412'
       },
       {
-        "notion_url": "https://klanto.notion.site/The-Mysterious-Spellbooks-137d4930bed548a0ad7065f91b3f4c44?pvs=4",
-        "browser_url": "/",
-        "notion_page_id": "137d4930bed548a0ad7065f91b3f4c44"
-      },
-      {
-        "notion_url": "https://klanto.notion.site/The-Mysterious-Spellbooks-137d4930bed548a0ad7065f91b3f4c44?pvs=4",
-        "browser_url": "demo",
-        "notion_page_id": "137d4930bed548a0ad7065f91b3f4c44"
+        title: 'ok2',
+        pageId: 'eb1681cbb69948ed9b174503d8987155'
       }
     ],
     "footer": "<script>console.log(\"this is custom javascript from the footer of the site config\")</script>",
@@ -72,7 +66,6 @@ const siteConfig: SiteConfig = {
 }
 
 export function getSiteConfig<T>(key: string, defaultValue?: T): T {
-  console.log("site config", siteConfig)
   let value = siteConfig[key]
 
   if (value !== undefined) {
