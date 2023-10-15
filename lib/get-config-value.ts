@@ -1,7 +1,7 @@
 import rawSiteConfig from '../site.config'
 import { SiteConfig } from './site-config'
-import { api, apiHost } from '@/lib/config'
-
+import { api, apiHost, site } from '@/lib/config'
+var get = require('lodash/get');
 if (!rawSiteConfig) {
   throw new Error(`Config error: invalid site.config.ts`)
 }
@@ -43,7 +43,8 @@ const fetchSiteConfig = () => {
     "js": "<script>console.log(\"this is JS only section and it needs to go in the header\")</script>",
     "css": "p {\r\ncolor: red !important;\r\n}",
     "logo": "https://app.jiffy.so/static/images/jiffy.jpg",
-    "rootNotionPageId": '89dbe8d0295245d48771a8c67ceee315',
+    "rootNotionPageId": '61795be623be4fecb49b4e5dc643a46b',
+    // "rootNotionPageId": 'eb036e2c9db54b6c9ba43a048efd3c9c',
     "navigationLinks": [
       {
         title: 'ok1',
@@ -54,8 +55,20 @@ const fetchSiteConfig = () => {
         pageId: 'eb1681cbb69948ed9b174503d8987155'
       }
     ],
+    "colors": {
+      "light": {
+        "primary": "#000000"
+      },
+      "dark": {
+        "primary": "#ffffff"
+      },
+    },
+    "font": {
+      "name": "Open Sans",
+      "link": "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700",
+    },
     "footer": "<script>console.log(\"this is custom javascript from the footer of the site config\")</script>",
-    "header": "<meta name=\"description\" content=\"just head tag content\" />"
+    "header": "<meta name=\"description\" content=\"just head tag content\" />",
   }
   return sanitizeResponse(response);
 }
@@ -67,6 +80,9 @@ const siteConfig: SiteConfig = {
 
 export function getSiteConfig<T>(key: string, defaultValue?: T): T {
   let value = siteConfig[key]
+  if(key.split('.').length > 1) {
+    value = get(siteConfig, key)
+  }
 
   if (value !== undefined) {
     return value
@@ -76,7 +92,8 @@ export function getSiteConfig<T>(key: string, defaultValue?: T): T {
     return defaultValue
   }
 
-  throw new Error(`Config error: missing required site config value "${key}"`)
+  return undefined;
+  // throw new Error(`Config error: missing required site config value "${key}"`)
 }
 
 export function getEnv(
