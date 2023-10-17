@@ -55,12 +55,13 @@ const fetchSiteConfig = () => {
         pageId: 'eb1681cbb69948ed9b174503d8987155'
       }
     ],
+    // "themename": "College",
     "colors": {
       "light": {
-        "primary": "#000000"
+        "primary": "#0162DA"
       },
       "dark": {
-        "primary": "#ffffff"
+        "primary": "#0162DA"
       },
     },
     "font": {
