@@ -10,11 +10,32 @@ import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import parse from 'html-react-parser'
+import styled from '@emotion/styled'
 
 import * as config from '@/lib/config'
+import { isBasicAccount } from '@/lib/config';
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
+
+export const FabContainer = styled.a`
+    position: fixed;
+    width: auto;
+    height: 60px;
+    bottom: 40px;
+    left: 40px;
+    line-height: 60px;
+    background-color: blue;
+    color: #FFF;
+    padding: 0 30px;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    &:focus,
+    &:hover {
+      filter: brightness(150%);
+    }
+`;
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
@@ -34,9 +55,10 @@ export const FooterImpl: React.FC = () => {
     setHasMounted(true)
   }, [])
 
+  // debugger;
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2022 {config.author}</div>
+      <div className={styles.copyright}>Powered by {config.author}</div>
 
       <div className={styles.settings}>
         {hasMounted && (
@@ -141,6 +163,9 @@ export const FooterImpl: React.FC = () => {
           parse(config.footer)
         )
       }
+      {isBasicAccount && <FabContainer href='https://jiffy.so'>
+        Powered by {config.author}
+      </FabContainer>}
     </footer>
   )
 }

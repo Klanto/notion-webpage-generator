@@ -35,6 +35,7 @@ export interface SiteConfig {
   navigationLinks?: Array<NavigationLink>
 
   colors?: Object,
+  isBasicAccount?: boolean
 }
 
 export interface NavigationLink {

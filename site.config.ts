@@ -11,15 +11,15 @@ export default siteConfig({
   // basic site info (required)
   name: 'Next.js Notion Starter Kit',
   domain: 'localhost:3000',
-  author: 'Jiffy',
+  author: 'Jiffy.so',
 
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',
 
   // social usernames (optional)
-  // twitter: 'transitive_bs',
-  // github: 'transitive-bullshit',
-  // linkedin: 'fisch2',
+  twitter: 'transitive_bs',
+  github: 'transitive-bullshit',
+  linkedin: 'fisch2',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
@@ -61,5 +61,6 @@ export default siteConfig({
       title: 'Contact',
       pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
     }
-  ]
+  ],
+  isSearchEnabled: false,
 })

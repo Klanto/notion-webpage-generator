@@ -116,6 +116,9 @@ export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
 // Optional site search
 export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 
+// set account type
+export const isBasicAccount: boolean = getSiteConfig('isBasicAccount', true)
+
 // ----------------------------------------------------------------------------
 
 // Optional redis instance for persisting preview images

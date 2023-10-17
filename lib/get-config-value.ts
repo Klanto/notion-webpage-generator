@@ -1,7 +1,13 @@
 import rawSiteConfig from '../site.config'
 import { SiteConfig } from './site-config'
 import { api, apiHost, site } from '@/lib/config'
-var get = require('lodash/get');
+// var get = require('lodash/get');
+
+const get = (object, path, defval = null) => {
+  if (typeof path === "string") path = path.split(".");
+  return path.reduce((xs, x) => (xs && xs[x] ? xs[x] : defval), object);
+}
+
 if (!rawSiteConfig) {
   throw new Error(`Config error: invalid site.config.ts`)
 }
@@ -30,21 +36,26 @@ const fetchSiteConfig = () => {
     const cleanup = (str) => {
       return str.replaceAll("\r\n", " ").replaceAll("\"", "'");
     }
+    console.log(response)
     Object.keys(response).forEach(function (k) {
       if (response[k] && typeof response[k] === 'object') {
         sanitizeResponse(response[k]);
         return;
       }
+     if(typeof response[k] !== 'boolean') {
       response[k] = cleanup(response[k].toString())
+     }
     })
+    console.log(response)
     return response;
   }
   const response = {
-    "js": "<script>console.log(\"this is JS only section and it needs to go in the header\")</script>",
-    "css": "p {\r\ncolor: red !important;\r\n}",
+    "isBasicAccount": true,
+    // "js": "<script>console.log(\"this is JS only section and it needs to go in the header\")</script>",
+    // "css": "p {\r\ncolor: red !important;\r\n}",
     "logo": "https://app.jiffy.so/static/images/jiffy.jpg",
-    "rootNotionPageId": '61795be623be4fecb49b4e5dc643a46b',
-    // "rootNotionPageId": 'eb036e2c9db54b6c9ba43a048efd3c9c',
+    // // "rootNotionPageId": '61795be623be4fecb49b4e5dc643a46b',
+    "rootNotionPageId": 'eb036e2c9db54b6c9ba43a048efd3c9c',
     "navigationLinks": [
       {
         title: 'ok1',
@@ -55,21 +66,21 @@ const fetchSiteConfig = () => {
         pageId: 'eb1681cbb69948ed9b174503d8987155'
       }
     ],
-    // "themename": "College",
-    "colors": {
-      "light": {
-        "primary": "#0162DA"
-      },
-      "dark": {
-        "primary": "#0162DA"
-      },
-    },
-    "font": {
-      "name": "Open Sans",
-      "link": "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700",
-    },
-    "footer": "<script>console.log(\"this is custom javascript from the footer of the site config\")</script>",
-    "header": "<meta name=\"description\" content=\"just head tag content\" />",
+    // // "themename": "College",
+    // "colors": {
+    //   "light": {
+    //     "primary": "#0162DA"
+    //   },
+    //   "dark": {
+    //     "primary": "#0162DA"
+    //   },
+    // },
+    // "font": {
+    //   "name": "Open Sans",
+    //   "link": "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700",
+    // },
+    // "footer": "<script>console.log(\"this is custom javascript from the footer of the site config\")</script>",
+    // "header": "<meta name=\"description\" content=\"just head tag content\" />",
   }
   return sanitizeResponse(response);
 }
