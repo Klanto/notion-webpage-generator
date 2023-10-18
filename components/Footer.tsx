@@ -25,8 +25,8 @@ export const FabContainer = styled.a`
     bottom: 40px;
     left: 40px;
     line-height: 60px;
-    background-color: blue;
-    color: #FFF;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
     padding: 0 30px;
     border-radius: 50px;
     text-align: center;
@@ -58,9 +58,9 @@ export const FooterImpl: React.FC = () => {
   // debugger;
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Powered by {config.author}</div>
+      {/* <div className={styles.copyright}>Powered by {config.author}</div> */}
 
-      <div className={styles.settings}>
+      {/* <div className={styles.settings}>
         {hasMounted && (
           <a
             className={styles.toggleDarkMode}
@@ -72,7 +72,7 @@ export const FooterImpl: React.FC = () => {
             {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>
         )}
-      </div>
+      </div> */}
 
       <div className={styles.social}>
         {config.twitter && (
@@ -163,7 +163,7 @@ export const FooterImpl: React.FC = () => {
           parse(config.footer)
         )
       }
-      {isBasicAccount && <FabContainer href='https://jiffy.so'>
+      {isBasicAccount && <FabContainer href='https://jiffy.so' className='notion-link'>
         Powered by {config.author}
       </FabContainer>}
     </footer>
