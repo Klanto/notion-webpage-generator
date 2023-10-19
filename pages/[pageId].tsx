@@ -2,9 +2,8 @@ import * as React from 'react'
 import { GetStaticProps } from 'next'
 
 import { NotionPage } from '@/components/NotionPage'
-import { domain, isDev } from '@/lib/config'
+import { api, apiHost, isDev } from '@/lib/config'
 import { getSiteMap } from '@/lib/get-site-map'
-import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { PageProps, Params } from '@/lib/types'
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async (
@@ -12,17 +11,23 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async (
 ) => {
   const rawPageId = context.params.pageId as string
 
-  try {
-    const props = await resolveNotionPage(domain, rawPageId)
-
-    return { props, revalidate: 10 }
-  } catch (err) {
-    console.error('page error', domain, rawPageId, err)
-
-    // we don't want to publish the error version of this page, so
-    // let next.js know explicitly that incremental SSG failed
-    throw err
-  }
+  const res = await fetch(`${apiHost}${api.getNotionPageProps}`, {
+    method: 'POST',
+    body: JSON.stringify({
+      pageId: rawPageId
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then((response) => response.json())
+    .then((data) => {
+      // setProps(data);
+      return data;
+    })
+    .catch((err) => {
+      return {}
+    })
+  return { props: res };
 }
 
 export async function getStaticPaths() {
@@ -45,7 +50,7 @@ export async function getStaticPaths() {
     fallback: false
   }
 
-  console.log(staticPaths.paths)
+  // console.log(staticPaths.paths)
   return staticPaths
 }
 
