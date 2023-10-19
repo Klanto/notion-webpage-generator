@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 
 import { NotionPage } from '@/components/NotionPage'
-import { api, apiHost, isDev } from '@/lib/config'
+import { api, apiHost, domain, isDev } from '@/lib/config'
 import { getSiteMap } from '@/lib/get-site-map'
+import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { PageProps, Params } from '@/lib/types'
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async (
@@ -27,7 +28,7 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async (
     .catch((err) => {
       return {}
     })
-  return { props: res };
+ return  { props: res };
 }
 
 export async function getStaticPaths() {
@@ -53,6 +54,37 @@ export async function getStaticPaths() {
   // console.log(staticPaths.paths)
   return staticPaths
 }
+
+// export async function getServerSideProps(context) {
+// export const getServerSideProps = async (
+//   context
+// ) => {
+//   // Fetch data from external API
+//   // const res = await fetch(`https://.../data`)
+//   // const data = await res.json()
+
+//   const { pageid } = context.query;
+// console.log("dsfdsfsd", pageid, context.params.pageId)
+//   const res = await fetch(`${apiHost}${api.getNotionPageProps}`, {
+//     method: 'POST',
+//     body: JSON.stringify({
+//       pageId: pageid
+//     }),
+//     headers: {
+//       'content-type': 'application/json'
+//     }
+//   }).then((response) => response.json())
+//     .then((data) => {
+//       // setProps(data);
+//       return { props: data }
+//     })
+//     .catch((err) => {
+//       return {}
+//     })
+//  return res;
+//   // Pass data to the page via props
+  
+// }
 
 export default function NotionDomainDynamicPage(props) {
   return <NotionPage {...props} />
