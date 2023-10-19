@@ -2,15 +2,15 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: 'ffbe166b81a14edbb7e165062b2307f9',
+  rootNotionPageId: '',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'localhost:3000',
+  name: 'Vercel testing',
+  domain: 'nextjs-notion-starter-kit-gray-eight.vercel.app',
   author: 'Jiffy.so',
 
   // open graph metadata (optional)
