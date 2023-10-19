@@ -30,6 +30,7 @@ const nextConfig = {
   // distDir: "_next",
   // output: 'standalone',
   // trailingSlash: true,
+  reactStrictMode: true,
   cleanDistDir: false,
   images: {
     unoptimized: true,
