@@ -54,8 +54,8 @@ const fetchSiteConfig = () => {
     // "js": "<script>console.log(\"this is JS only section and it needs to go in the header\")</script>",
     // "css": "p {\r\ncolor: red !important;\r\n}",
     "logo": "https://app.jiffy.so/static/images/jiffy.jpg",
-    // "rootNotionPageId": 'ffbe166b-81a1-4edb-b7e1-65062b2307f9',
-    "rootNotionPageId": '61795be623be4fecb49b4e5dc643a46b',
+    "rootNotionPageId": 'ffbe166b-81a1-4edb-b7e1-65062b2307f9',
+    // "rootNotionPageId": '61795be623be4fecb49b4e5dc643a46b',
     // "rootNotionPageId": 'eb036e2c9db54b6c9ba43a048efd3c9c',
     "navigationLinks": [
       {
@@ -67,15 +67,15 @@ const fetchSiteConfig = () => {
         pageId: 'eb1681cbb69948ed9b174503d8987155'
       }
     ],
-    "themename": "College",
-    "colors": {
-      "light": {
-        "primary": "#0162DA"
-      },
-      "dark": {
-        "primary": "#0162DA"
-      },
-    },
+    "themename": "College1",
+    // "colors": {
+    //   "light": {
+    //     "primary": "#0162DA"
+    //   },
+    //   "dark": {
+    //     "primary": "#0162DA"
+    //   },
+    // },
     "font": {
       "name": "Open Sans",
       "link": "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700",
