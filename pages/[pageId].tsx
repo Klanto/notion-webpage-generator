@@ -6,6 +6,7 @@ import { api, apiHost, domain, isDev } from '@/lib/config'
 import { getSiteMap } from '@/lib/get-site-map'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { PageProps, Params } from '@/lib/types'
+import { defaultMapPageUrl } from 'react-notion-x'
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async (
   context
@@ -87,5 +88,8 @@ export async function getStaticPaths() {
 // }
 
 export default function NotionDomainDynamicPage(props) {
+
+  const mapPageUrl = defaultMapPageUrl("067dd719a912471ea9a3ac10710e7fdf");
+  console.log("mappageurl", mapPageUrl)
   return <NotionPage {...props} />
 }

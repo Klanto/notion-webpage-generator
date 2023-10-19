@@ -36,7 +36,7 @@ const fetchSiteConfig = () => {
     const cleanup = (str) => {
       return str.replaceAll("\r\n", " ").replaceAll("\"", "'");
     }
-    console.log(response)
+    // console.log(response)
     Object.keys(response).forEach(function (k) {
       if (response[k] && typeof response[k] === 'object') {
         sanitizeResponse(response[k]);
@@ -46,7 +46,7 @@ const fetchSiteConfig = () => {
       response[k] = cleanup(response[k].toString())
      }
     })
-    console.log(response)
+    // console.log(response)
     return response;
   }
   const response = {

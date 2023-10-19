@@ -25,7 +25,7 @@ export default function Preview() {
           setProps(data);
         })
         .catch((err) => {
-          console.log(err)
+          // console.log(err)
         })
     }
     fetchData()
