@@ -90,6 +90,5 @@ export async function getStaticPaths() {
 export default function NotionDomainDynamicPage(props) {
 
   const mapPageUrl = defaultMapPageUrl("067dd719a912471ea9a3ac10710e7fdf");
-  console.log("mappageurl", mapPageUrl)
   return <NotionPage {...props} />
 }
