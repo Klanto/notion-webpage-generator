@@ -57,7 +57,7 @@ const fetchSiteConfig = () => {
     "rootNotionPageId": 'ffbe166b-81a1-4edb-b7e1-65062b2307f9',
     // "rootNotionPageId": '61795be623be4fecb49b4e5dc643a46b',
     // "rootNotionPageId": 'eb036e2c9db54b6c9ba43a048efd3c9c',
-    "navigationLinks": [
+    "navigationLinks": [ 
     ],
     "themename": "College1",
     // "colors": {
