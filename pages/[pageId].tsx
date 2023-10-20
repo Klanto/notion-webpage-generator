@@ -8,53 +8,53 @@ import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { PageProps, Params } from '@/lib/types'
 import { defaultMapPageUrl } from 'react-notion-x'
 
-export const getStaticProps: GetStaticProps<PageProps, Params> = async (
-  context
-) => {
-  const rawPageId = context.params.pageId as string
+// export const getStaticProps: GetStaticProps<PageProps, Params> = async (
+//   context
+// ) => {
+//   const rawPageId = context.params.pageId as string
 
-  const res = await fetch(`${apiHost}${api.getNotionPageProps}`, {
-    method: 'POST',
-    body: JSON.stringify({
-      pageId: rawPageId
-    }),
-    headers: {
-      'content-type': 'application/json'
-    }
-  }).then((response) => response.json())
-    .then((data) => {
-      // setProps(data);
-      return data;
-    })
-    .catch((err) => {
-      return {}
-    })
- return  { props: res };
-}
+//   const res = await fetch(`${apiHost}${api.getNotionPageProps}`, {
+//     method: 'POST',
+//     body: JSON.stringify({
+//       pageId: rawPageId
+//     }),
+//     headers: {
+//       'content-type': 'application/json'
+//     }
+//   }).then((response) => response.json())
+//     .then((data) => {
+//       // setProps(data);
+//       return data;
+//     })
+//     .catch((err) => {
+//       return {}
+//     })
+//  return  { props: res };
+// }
 
-export async function getStaticPaths() {
-  if (isDev) {
-    return {
-      paths: [],
-      fallback: 'blocking'
-    }
-  }
+// export async function getStaticPaths() {
+//   if (isDev) {
+//     return {
+//       paths: [],
+//       fallback: 'blocking'
+//     }
+//   }
 
-  const siteMap = await getSiteMap()
+//   const siteMap = await getSiteMap()
 
-  const staticPaths = {
-    paths: Object.keys(siteMap.canonicalPageMap).map((pageId) => ({
-      params: {
-        pageId
-      }
-    })),
-    // paths: [],
-    fallback: false
-  }
+//   const staticPaths = {
+//     paths: Object.keys(siteMap.canonicalPageMap).map((pageId) => ({
+//       params: {
+//         pageId
+//       }
+//     })),
+//     // paths: [],
+//     fallback: false
+//   }
 
-  // console.log(staticPaths.paths)
-  return staticPaths
-}
+//   // console.log(staticPaths.paths)
+//   return staticPaths
+// }
 
 // export async function getServerSideProps(context) {
 // export const getServerSideProps = async (
@@ -87,8 +87,30 @@ export async function getStaticPaths() {
   
 // }
 
-export default function NotionDomainDynamicPage(props) {
 
-  const mapPageUrl = defaultMapPageUrl("067dd719a912471ea9a3ac10710e7fdf");
+export const getServerSideProps = (async (context) => {
+  const rawPageId = context.params.pageId as string
+
+  const res = await fetch(`${apiHost}${api.getNotionPageProps}`, {
+    method: 'POST',
+    body: JSON.stringify({
+      pageId: rawPageId
+    }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  }).then((response) => response.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => {
+      console.log(err)
+      return { notFound: true, }
+    })
+ return  { props: res };
+});
+
+export default function PageId(props) {
+  // const mapPageUrl = defaultMapPageUrl("067dd719a912471ea9a3ac10710e7fdf");
   return <NotionPage {...props} />
 }
