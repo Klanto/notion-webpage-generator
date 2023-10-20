@@ -68,7 +68,7 @@ const fetchSiteConfig = () => {
       }
     ],
     "themename": "College1",
-    // "colors": { 
+    // "colors": {
     //   "light": {
     //     "primary": "#0162DA"
     //   },
