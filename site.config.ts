@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Vercel testing',
-  domain: 'nextjs-notion-starter-kit-gray-eight.vercel.app',
+  domain: 'http://notion-webpage-generator-vufe-git-feature-vercel-test-klanto.vercel.app/',
   author: 'Jiffy.so',
 
   // open graph metadata (optional)
@@ -53,14 +53,7 @@ export default siteConfig({
   // navigationStyle: 'default',
   navigationStyle: 'custom',
   navigationLinks: [
-    {
-      title: 'About',
-      pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-    },
-    {
-      title: 'Contact',
-      pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-    }
+    
   ],
   isSearchEnabled: false,
 })
