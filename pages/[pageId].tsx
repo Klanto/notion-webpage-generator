@@ -142,7 +142,7 @@ export default async function PageId() {
         }
       }).then((response) => response.json())
         .then((data) => {
-          setProps(data);
+          setProps({props: data});
         })
         .catch((err) => {
           // console.log(err)
