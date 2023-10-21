@@ -121,7 +121,7 @@ import { useEffect, useState } from 'react'
 //  return  { props: {...res} };
 // });
 
-export default function PageId() {
+export default async function PageId() {
   const [mounted, setMounted] = useState(false);
   const [pageid, setPageId] = useState(() => {
     return typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('pageid');
