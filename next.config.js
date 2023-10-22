@@ -26,10 +26,6 @@ module.exports = withBundleAnalyzer({
 });
 
 const nextConfig = {
-  // distDir: 'build',
-  // distDir: "_next",
-  // output: 'standalone',
-  // trailingSlash: true,
   reactStrictMode: true,
   cleanDistDir: false,
   images: {
