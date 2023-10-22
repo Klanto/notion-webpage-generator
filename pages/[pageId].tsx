@@ -112,6 +112,7 @@ export const getServerSideProps = (async (context) => {
 });
 
 export default function PageId(props) {
-  // const mapPageUrl = defaultMapPageUrl("067dd719a912471ea9a3ac10710e7fdf");
+  const mapPageUrl = defaultMapPageUrl("067dd719a912471ea9a3ac10710e7fdf");
+  console.log(mapPageUrl);
   return <NotionPage {...props} />
 }
