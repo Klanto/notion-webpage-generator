@@ -25,6 +25,7 @@ try {
   throw err
 }
 
+
 const fetchSiteConfig = async () => {
   // await fetch('https://jiffy-public.s3.us-east-1.amazonaws.com/config.json', {
   //   method: 'GET'
@@ -34,7 +35,6 @@ const fetchSiteConfig = async () => {
   //   return data;
   // })
   const sanitizeResponse = (response) => {
-    debugger;
     const cleanup = (str) => {
       return str.replaceAll("\r\n", " ").replaceAll("\"", "'");
     }
@@ -80,10 +80,17 @@ const fetchSiteConfig = async () => {
   // }
   return sanitizeResponse(response);
 }
+
+async function main(): Promise<void> {
+  const foo = await fetchSiteConfig()
+  return foo
+}
+
+// const customSiteConfig = await fetchSiteConfig();
 const siteConfig: SiteConfig = {
   ...rawSiteConfig,
   ...siteConfigOverrides,
-  ...fetchSiteConfig()
+  ...await fetchSiteConfig()
 }
 
 export function getSiteConfig<T>(key: string, defaultValue?: T): T {

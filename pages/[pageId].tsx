@@ -7,6 +7,8 @@ import { getSiteMap } from '@/lib/get-site-map'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { PageProps, Params } from '@/lib/types'
 import { defaultMapPageUrl } from 'react-notion-x'
+import { config } from 'dotenv'
+import { getSiteConfig } from '@/lib/get-config-value'
 
 // export const getStaticProps: GetStaticProps<PageProps, Params> = async (
 //   context
@@ -91,6 +93,9 @@ import { defaultMapPageUrl } from 'react-notion-x'
 export const getServerSideProps = (async (context) => {
   const rawPageId = context.params.pageId as string
 
+  const mapPageUrl = defaultMapPageUrl(getSiteConfig('rootNotionPageId'));
+  console.log("mapPageUrl =>", mapPageUrl(rawPageId));
+
   console.log("rawPageId", rawPageId);
   const res = await fetch(`${apiHost}${api.getNotionPageProps}`, {
     method: 'POST',
@@ -112,7 +117,5 @@ export const getServerSideProps = (async (context) => {
 });
 
 export default function PageId(props) {
-  const mapPageUrl = defaultMapPageUrl("067dd719a912471ea9a3ac10710e7fdf");
-  console.log(mapPageUrl);
   return <NotionPage {...props} />
 }
