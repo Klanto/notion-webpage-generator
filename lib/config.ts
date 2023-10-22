@@ -152,10 +152,11 @@ export const apiHost = isDev
 export const apiBaseUrl = `/api`
 
 export const api = {
-  searchNotion: `${apiBaseUrl}/_search-notion`,
-  getNotionPageInfo: `${apiBaseUrl}/_notion-page-info`,
-  getSocialImage: `${apiBaseUrl}/_social-image`,
+  searchNotion: `${apiBaseUrl}/search-notion`,
+  getNotionPageInfo: `${apiBaseUrl}/notion-page-info`,
+  getSocialImage: `${apiBaseUrl}/social-image`,
   getNotionPageProps: `${apiBaseUrl}/notion-page-props`,
+  getNotionPages: `${apiBaseUrl}/get-all-pages`,
 }
 
 // ----------------------------------------------------------------------------
