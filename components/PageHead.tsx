@@ -90,6 +90,10 @@ export const PageHead: React.FC<
           parse(header)
         )
       }
+      <meta
+        name="format-detection"
+        content="telephone=no, date=no, email=no, address=no"
+      />
       <title>{title}</title>
     </Head>
   )
