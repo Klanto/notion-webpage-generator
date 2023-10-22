@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Vercel testing',
-  domain: 'http://notion-webpage-generator-vufe-git-feature-vercel-test-klanto.vercel.app/',
+  domain: 'notion-webpage-generator-vufe-git-feature-vercel-test-klanto.vercel.app',
   author: 'Jiffy.so',
 
   // open graph metadata (optional)
