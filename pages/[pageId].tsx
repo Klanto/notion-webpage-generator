@@ -91,6 +91,7 @@ import { defaultMapPageUrl } from 'react-notion-x'
 export const getServerSideProps = (async (context) => {
   const rawPageId = context.params.pageId as string
 
+  console.log("rawPageId", rawPageId);
   const res = await fetch(`${apiHost}${api.getNotionPageProps}`, {
     method: 'POST',
     body: JSON.stringify({

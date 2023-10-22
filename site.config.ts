@@ -47,6 +47,7 @@ export default siteConfig({
     // '/bar': '0be6efce9daf42688f65c76b89f8eb27',
     '/ok1': '2e31899735d7481ba488913633640412',
     '/ok2': 'eb1681cbb69948ed9b174503d8987155',
+    '/let-me-test-please': '99c2dadf812b43e7ac5bb9d33caf3e03',
   },
   // pageUrlOverrides: null,
 
