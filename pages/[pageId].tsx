@@ -1,13 +1,8 @@
 import * as React from 'react'
-import { GetServerSideProps, GetStaticProps } from 'next'
 
 import { NotionPage } from '@/components/NotionPage'
-import { api, apiHost, domain, isDev } from '@/lib/config'
-import { getSiteMap } from '@/lib/get-site-map'
-import { resolveNotionPage } from '@/lib/resolve-notion-page'
-import { PageProps, Params } from '@/lib/types'
+import { api, apiHost } from '@/lib/config'
 import { defaultMapPageUrl } from 'react-notion-x'
-import { config } from 'dotenv'
 import { getSiteConfig } from '@/lib/get-config-value'
 
 // export const getStaticProps: GetStaticProps<PageProps, Params> = async (
