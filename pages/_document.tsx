@@ -4,12 +4,14 @@ import { css, Global, ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import { IconContext } from '@react-icons/all-files'
 import { getSiteConfig } from '@/lib/get-config-value';
+import { font, colors, themename } from '@/lib/config';
 import { get } from 'http'
 
 export const Root = styled.body`
 `;
 
 export const theme = {
+  ...colors
 }
 
 export default class MyDocument extends Document {
@@ -32,15 +34,15 @@ export default class MyDocument extends Document {
           <Root>
             <ThemeProvider theme={theme}>
               {
-                typeof getSiteConfig('font') !== 'undefined' && (
+                font && (
                   <Global 
                       styles={[
                         css`
-                          @import url(${getSiteConfig('font.link')});
+                          @import url(${font.link});
                         `,
                         {
                           "*": {
-                            "--notion-font": `${getSiteConfig('font.name')}`,
+                            "--notion-font": `${font.name}`,
                           }
                         },
                     ]}
@@ -48,14 +50,14 @@ export default class MyDocument extends Document {
                 )
               }              
               {
-                typeof getSiteConfig('colors') !== 'undefined' && (
+                colors && (
                   <Global
                     styles={{
                       'body': {
-                        "--primary-color": `${getSiteConfig('colors.light.primary')}`,
+                        "--primary-color": `${colors.light.primary}`,
                         "color": "var(--primary-color)",
                         "&.dark-mode": {
-                          "--primary-color": `${getSiteConfig('colors.dark.primary')}`,
+                          "--primary-color": `${colors.dark.primary}`,
                           "color": "var(--primary-color)",
                         }
                       }
@@ -64,8 +66,8 @@ export default class MyDocument extends Document {
                 )
               }
               {
-                typeof getSiteConfig('themename') !== 'undefined' &&
-                getSiteConfig('themename') === 'College' &&
+                themename &&
+                themename === 'College' &&
                  ( 
                  <Global styles={css`
                   .notion-title {

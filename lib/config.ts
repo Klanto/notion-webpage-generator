@@ -119,6 +119,13 @@ export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 // set account type
 export const isBasicAccount: boolean = getSiteConfig('isBasicAccount', true)
 
+// set font
+export const font: Record<string, any> = getSiteConfig('font', null);
+// set theme
+type Themes = 'College'|'variants'|'of'|'strings';
+export const themename: Themes = getSiteConfig('themename', null);
+// set colors
+export const colors: Record<string, any> = getSiteConfig('colors', null);
 // ----------------------------------------------------------------------------
 
 // Optional redis instance for persisting preview images

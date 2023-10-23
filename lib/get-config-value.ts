@@ -90,7 +90,21 @@ async function main(): Promise<void> {
 const siteConfig: SiteConfig = {
   ...rawSiteConfig,
   ...siteConfigOverrides,
-  ...await fetchSiteConfig()
+  ...await fetchSiteConfig(),
+  rootNotionPageId: '61795be623be4fecb49b4e5dc643a46b',
+    "themename": "College",
+    "colors": {
+      "light": {
+        "primary": "#0162DA"
+      },
+      "dark": {
+        "primary": "#0162DA"
+      },
+    },
+    "font": {
+      "name": "Open Sans",
+      "link": "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700",
+    },
 }
 
 export function getSiteConfig<T>(key: string, defaultValue?: T): T {
