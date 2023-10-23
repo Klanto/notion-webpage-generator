@@ -50,7 +50,7 @@ export default siteConfig({
   //   '/let-me-test-please': '99c2dadf812b43e7ac5bb9d33caf3e03',
   // },
   pageUrlOverrides: null,
-  includeNotionIdInUrls: false,
+  includeNotionIdInUrls: true,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
