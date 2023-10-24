@@ -62,10 +62,6 @@ export const linkedin: string | null = getSiteConfig('linkedin', null)
 export const newsletter: string | null = getSiteConfig('newsletter', null)
 export const zhihu: string | null = getSiteConfig('zhihu', null)
 
-// custom tags
-export const header: string | null = getSiteConfig('header', null)
-export const footer: string | null = getSiteConfig('footer', null)
-
 export const getMastodonHandle = (): string | null => {
   if (!mastodon) {
     return null
@@ -126,6 +122,19 @@ type Themes = 'College'|'variants'|'of'|'strings';
 export const themename: Themes = getSiteConfig('themename', null);
 // set colors
 export const colors: Record<string, any> = getSiteConfig('colors', null);
+
+// logo
+export const logo: string = getSiteConfig('logo', '');
+// favicon
+export const favicon: string = getSiteConfig('favicon', '');
+// css
+export const css: string = getSiteConfig('css', '');
+// js
+export const js: string = getSiteConfig('js', '');
+// header
+export const header: string = getSiteConfig('header', '');
+// footer
+export const footer: string = getSiteConfig('footer', '');
 // ----------------------------------------------------------------------------
 
 // Optional redis instance for persisting preview images

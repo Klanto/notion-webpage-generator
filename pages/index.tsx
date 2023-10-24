@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { NotionPage } from '@/components/NotionPage'
-import { api, apiHost, domain } from '@/lib/config'
+import { api, apiHost, domain, rootNotionPageId } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { useState, useEffect } from 'react';
 
@@ -26,9 +26,7 @@ import { useState, useEffect } from 'react';
 
 export default function PageId() {
   const [mounted, setMounted] = useState(false);
-  const [pageid, setPageId] = useState(() => {
-    return typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('pageid');
-  });
+  const [pageid, setPageId] = useState(rootNotionPageId);
 
   const [props, setProps] = useState(null);
   useEffect(() => {
