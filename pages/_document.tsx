@@ -22,14 +22,14 @@ export default class MyDocument extends Document {
             {
               favicon && (
                 <>
-                <link rel='shortcut icon' href={favicon} />
-                <link
-                  rel='icon'
-                  type='image/png'
-                  sizes='32x32'
-                  href={favicon}
-                />
-            </>
+                  <link rel='shortcut icon' href={favicon} />
+                  <link
+                    rel='icon'
+                    type='image/png'
+                    sizes='32x32'
+                    href={favicon}
+                  />
+              </>
               )
             }
             

@@ -5,11 +5,12 @@ import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import cs from 'classnames'
 import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
-
-import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
+// import { CustomBreadcrumbs as Breadcrumbs} from './Breadcrumbs';
+import { isSearchEnabled, navigationLinks, navigationStyle, logo} from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
+import CustomBreadcrumbs from './Breadcrumbs'
 
 const ToggleThemeButton = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
@@ -45,7 +46,7 @@ export const NotionPageHeader: React.FC<{
   return (
     <header className='notion-header'>
       <div className='notion-nav-header'>
-        <Breadcrumbs block={block} rootOnly={true} />
+        <CustomBreadcrumbs block={block} rootOnly={true}/>
 
         <div className='notion-nav-header-rhs breadcrumbs'>
           {navigationLinks
