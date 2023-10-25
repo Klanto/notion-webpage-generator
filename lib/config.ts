@@ -35,6 +35,21 @@ const getAllPages = () => {
   if( pageurls !== null) {
     pageurls = Object.entries(pageurls).reduce((acc, [k, v]) => ({ ...acc, ...!k.startsWith('/') ? {[`/${k}`]: v } : {[k]: v}}), {})
   }
+  const pages = getSiteConfig('pages', [])
+  pages.forEach(page => {
+    const {notion_page_id: id = "", browser_url: url = ""} = page;
+    
+    if(id !== "" && url !== "") {
+      if(!Object.values(pageurls).includes(id)) {
+        pageurls = {
+          ...pageurls,
+          ...{
+            [`/${url}`]: id
+          }
+        }
+      }
+    }
+  });
   return pageurls
 }
 export const pageUrlOverrides = cleanPageUrlMap(
@@ -169,7 +184,7 @@ export const port = getEnv('PORT', '3000')
 export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
 export const apiHost = isDev
   ? host
-  : `http://${process.env.VERCEL_URL || domain}`
+  : `https://${process.env.VERCEL_URL || domain}`
 
 export const apiBaseUrl = `/api`
 

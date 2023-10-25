@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Vercel testing',
-  domain: 'localhost:3000',
+  domain: 'notion-webpage-generator-vufe.vercel.app',
   author: 'Jiffy.so',
 
   // open graph metadata (optional)
