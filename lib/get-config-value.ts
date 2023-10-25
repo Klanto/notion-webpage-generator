@@ -87,7 +87,7 @@ async function main(): Promise<void> {
 }
 
 // const customSiteConfig = await fetchSiteConfig();
-const siteConfig: SiteConfig = {
+export const siteConfig: SiteConfig = {
   ...rawSiteConfig,
   ...siteConfigOverrides,
   ...await fetchSiteConfig(),
