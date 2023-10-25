@@ -94,6 +94,20 @@ export const PageHead: React.FC<
         name="format-detection"
         content="telephone=no, date=no, email=no, address=no"
       />
+      {
+        config.css && (
+          <style>
+            {config.css}
+          </style>
+        )
+      }
+      {
+        config.js && (
+          <style>
+            {config.js}
+          </style>
+        )
+      }
       <title>{title}</title>
     </Head>
   )

@@ -3,8 +3,7 @@ import Document, { Head, Html, Main, NextScript } from 'next/document'
 import { css, Global, ThemeProvider } from '@emotion/react'
 import styled from '@emotion/styled'
 import { IconContext } from '@react-icons/all-files'
-import { getSiteConfig } from '@/lib/get-config-value';
-import { font, colors, themename } from '@/lib/config';
+import { font, colors, themename, favicon } from '@/lib/config';
 import { get } from 'http'
 
 export const Root = styled.body`
@@ -20,13 +19,20 @@ export default class MyDocument extends Document {
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
         <Html lang='en'>
           <Head>
-            <link rel='shortcut icon' href='/favicon.ico' />
-            <link
-              rel='icon'
-              type='image/png'
-              sizes='32x32'
-              href='favicon.png'
-            />
+            {
+              favicon && (
+                <>
+                <link rel='shortcut icon' href={favicon} />
+                <link
+                  rel='icon'
+                  type='image/png'
+                  sizes='32x32'
+                  href={favicon}
+                />
+            </>
+              )
+            }
+            
 
             <link rel='manifest' href='/manifest.json' />
           </Head>
