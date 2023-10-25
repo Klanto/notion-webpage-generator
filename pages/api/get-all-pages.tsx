@@ -7,7 +7,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
     return res.status(405).send({ error: 'method not allowed here' })
   }
-
-  const props = await getSiteMap()
+  type queryParam = {
+    pageid?: string | undefined, 
+  }
+  const {pageid = undefined}: queryParam = req.query
+  const props = await getSiteMap(pageid)
   return res.status(200).json(props.canonicalPageMap);
 }

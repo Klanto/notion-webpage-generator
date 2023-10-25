@@ -30,9 +30,15 @@ export const rootNotionSpaceId: string | null = parsePageId(
   getSiteConfig('rootNotionSpaceId', null),
   { uuid: true }
 )
-
+const getAllPages = () => {
+  let pageurls = getSiteConfig('pageUrlOverrides', {})
+  if( pageurls !== null) {
+    pageurls = Object.entries(pageurls).reduce((acc, [k, v]) => ({ ...acc, ...!k.startsWith('/') ? {[`/${k}`]: v } : {[k]: v}}), {})
+  }
+  return pageurls
+}
 export const pageUrlOverrides = cleanPageUrlMap(
-  getSiteConfig('pageUrlOverrides', {}) || {},
+  getAllPages() || {},
   { label: 'pageUrlOverrides' }
 )
 
