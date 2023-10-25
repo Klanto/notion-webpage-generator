@@ -9,7 +9,6 @@ export async function fetchSiteProps(): Promise<GlobalProps> {
           return data;
         })
         .catch((err) => {
-          console.log(err)
           return { ...err, id  };
         })
     return {

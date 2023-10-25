@@ -9,9 +9,6 @@ export const getServerSideProps = (async (context) => {
   const rawPageId = context.params.pageId as string
 
   const mapPageUrl = defaultMapPageUrl(getSiteConfig('rootNotionPageId'));
-  console.log("mapPageUrl =>", mapPageUrl(rawPageId));
-
-  console.log("rawPageId", rawPageId);
   const res = await fetch(`${apiHost}${api.getNotionPageProps}`, {
     method: 'POST',
     body: JSON.stringify({
@@ -25,7 +22,6 @@ export const getServerSideProps = (async (context) => {
       return data;
     })
     .catch((err) => {
-      console.log(err)
       return { notFound: true, }
     })
  return  { props: res };
