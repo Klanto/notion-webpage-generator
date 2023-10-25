@@ -1,0 +1,13 @@
+{
+    "font":{
+       "name":"Open Sans"
+    },
+    "colors":{
+       "red":"#c33",
+       "blue":"#33c"
+    },
+    "breakpoints":{
+       "landscape":"only screen and (orientation : landscape)",
+       "portrait":"only screen and (orientation : portrait)"
+    }
+ }

@@ -1,13 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { domain, } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
+import { getSiteMap } from '@/lib/get-site-map';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method !== 'POST') {
+  if (req.method !== 'GET') {
     return res.status(405).send({ error: 'method not allowed here' })
   }
-  const { pageId } = req.body;
-
-  const props = await resolveNotionPage(domain, pageId)
-  return res.status(200).json(props);
+  type queryParam = {
+    pageid?: string | undefined, 
+  }
+  const {pageid = undefined}: queryParam = req.query
+  const props = await getSiteMap(pageid)
+  return res.status(200).json(props.canonicalPageMap);
 }

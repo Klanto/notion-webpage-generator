@@ -70,3 +70,15 @@ export interface NotionPageInfo {
   authorImage: string
   detail: string
 }
+
+type page = {}
+
+export type GlobalProps = {
+  css: string,
+  js: string,
+  logo: string,
+  pages: page[],
+  header: string,
+  footer: string,
+  favicon: string
+}

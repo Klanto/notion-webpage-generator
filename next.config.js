@@ -30,13 +30,19 @@ const nextConfig = {
   // distDir: "_next",
   // output: 'standalone',
   // trailingSlash: true,
+  reactStrictMode: true,
   cleanDistDir: false,
   images: {
     unoptimized: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
-  },   
+  },
+  webpack: (config) => {
+    config.experiments = config.experiments || {};
+    config.experiments.topLevelAwait = true;
+    return config;
+  },
 };
 
 module.exports = nextConfig;

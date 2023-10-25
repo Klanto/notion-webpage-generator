@@ -2,16 +2,16 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: 'ffbe166b81a14edbb7e165062b2307f9',
+  rootNotionPageId: 'c70358f36e8d4f8686fd8e5e437ad4f2',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'localhost:3000',
-  author: 'Jiffy',
+  name: 'Vercel testing',
+  domain: 'notion-webpage-generator-vufe.vercel.app',
+  author: 'Jiffy.so',
 
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',
@@ -43,23 +43,21 @@ export default siteConfig({
   // example:
   //
   // pageUrlOverrides: {
-  //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
-  //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
-  // }
+  //   // '/foo': '067dd719a912471ea9a3ac10710e7fdf',
+  //   // '/bar': '0be6efce9daf42688f65c76b89f8eb27',
+  //   '/ok1': '2e31899735d7481ba488913633640412',
+  //   '/ok2': 'eb1681cbb69948ed9b174503d8987155',
+  //   '/let-me-test-please': '99c2dadf812b43e7ac5bb9d33caf3e03',
+  // },
   pageUrlOverrides: null,
+  includeNotionIdInUrls: true,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
   // navigationStyle: 'default',
   navigationStyle: 'custom',
   navigationLinks: [
-    {
-      title: 'About',
-      pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-    },
-    {
-      title: 'Contact',
-      pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-    }
-  ]
+    
+  ],
+  isSearchEnabled: false,
 })

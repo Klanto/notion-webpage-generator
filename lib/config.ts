@@ -30,9 +30,15 @@ export const rootNotionSpaceId: string | null = parsePageId(
   getSiteConfig('rootNotionSpaceId', null),
   { uuid: true }
 )
-
+const getAllPages = () => {
+  let pageurls = getSiteConfig('pageUrlOverrides', {})
+  if( pageurls !== null) {
+    pageurls = Object.entries(pageurls).reduce((acc, [k, v]) => ({ ...acc, ...!k.startsWith('/') ? {[`/${k}`]: v } : {[k]: v}}), {})
+  }
+  return pageurls
+}
 export const pageUrlOverrides = cleanPageUrlMap(
-  getSiteConfig('pageUrlOverrides', {}) || {},
+  getAllPages() || {},
   { label: 'pageUrlOverrides' }
 )
 
@@ -112,6 +118,29 @@ export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
 // Optional site search
 export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 
+// set account type
+export const isBasicAccount: boolean = getSiteConfig('isBasicAccount', true)
+
+// set font
+export const font: Record<string, any> = getSiteConfig('font', null);
+// set theme
+type Themes = 'College'|'variants'|'of'|'strings';
+export const themename: Themes = getSiteConfig('themename', null);
+// set colors
+export const colors: Record<string, any> = getSiteConfig('colors', null);
+
+// logo
+export const logo: string = getSiteConfig('logo', '');
+// favicon
+export const favicon: string = getSiteConfig('favicon', '');
+// css
+export const css: string = getSiteConfig('css', '');
+// js
+export const js: string = getSiteConfig('js', '');
+// header
+export const header: string = getSiteConfig('header', '');
+// footer
+export const footer: string = getSiteConfig('footer', '');
 // ----------------------------------------------------------------------------
 
 // Optional redis instance for persisting preview images
@@ -140,7 +169,7 @@ export const port = getEnv('PORT', '3000')
 export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
 export const apiHost = isDev
   ? host
-  : `http://${process.env.VERCEL_URL || domain}`
+  : `https://${process.env.VERCEL_URL || domain}`
 
 export const apiBaseUrl = `/api`
 
@@ -149,6 +178,7 @@ export const api = {
   getNotionPageInfo: `${apiBaseUrl}/notion-page-info`,
   getSocialImage: `${apiBaseUrl}/social-image`,
   getNotionPageProps: `${apiBaseUrl}/notion-page-props`,
+  getNotionPages: `${apiBaseUrl}/get-all-pages`,
 }
 
 // ----------------------------------------------------------------------------

@@ -33,6 +33,9 @@ export interface SiteConfig {
 
   navigationStyle?: types.NavigationStyle
   navigationLinks?: Array<NavigationLink>
+
+  colors?: Object,
+  isBasicAccount?: boolean
 }
 
 export interface NavigationLink {
